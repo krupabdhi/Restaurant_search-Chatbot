@@ -1,0 +1,100 @@
+actions:
+- action_search_restaurants
+- action_send_email
+- action_verify_location
+- utter_ask_cuisine
+- utter_ask_emailid
+- utter_ask_emailtop10
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_price
+- utter_default
+- utter_goodbye
+- utter_greet
+entities:
+- cuisine
+- emailid
+- goodbye
+- location
+- people
+- price
+- price1
+- price2
+intents:
+- greet
+- dont_send_email
+- restaurant_search
+- affirm
+- send_email
+- goodbye
+- stop
+templates:
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Mexican
+      title: Mexican
+    - payload: Italian
+      title: Italian
+    - payload: American
+      title: American
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    text: what kind of cuisine would you prefer?
+  utter_ask_emailid:
+  - text: To what email id should I send it to?
+  - text: What's your email-id?
+  utter_ask_emailtop10:
+  - text: Do you want details of the top 10 restaurants on email?
+  - text: Should I send you information on top 10 restaurants through email?
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: In which location?
+  - text: In which city are you looking for restaurants?
+  utter_ask_price:
+  - buttons:
+    - payload: /restaurant_search{"price1":"0","price2":"300"}
+      title: Lesser than Rs. 300
+    - payload: /restaurant_search{"price1":"300","price2":"700"}
+      title: Rs. 300 to 700
+    - payload: /restaurant_search{"price1":"700","price2":"5000"}
+      title: More than 700
+    text: What price range are you looking at?
+  utter_default:
+  - text: i cannot understand
+  utter_goodbye:
+  - text: goodbye :(
+  - text: Bye-bye
+  - text: Cya! Have a good day :)
+  utter_greet:
+  - text: hey there! How may i help you today?
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today?
+  - text: Hey! What's up? How can I assist you?
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 0
+slots:
+  cuisine:
+    type: text
+  emailid:
+    type: text
+  location:
+    type: text
+  location_check:
+    initial_value: false
+    type: bool
+  price1:
+    initial_value: 0.0
+    max_value: 1.0
+    min_value: 0.0
+    type: float
+  price2:
+    initial_value: 5000.0
+    max_value: 1.0
+    min_value: 0.0
+    type: float
